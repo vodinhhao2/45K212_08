@@ -1,0 +1,16 @@
+<!-- Code php đăng nhập khi người dùng đã có tài khoản và chưa có tài khoản-->
+<?php
+if(isset($_Post['content'])):
+$content=$_Post['content'];
+if(isset($_Session['member'])):
+$productid=$_Get['id'];
+$memberid=mysqli-fetch_array($conect->query("Select*From member where username='".$_Session['member']."'"));
+$memberid=$memberid['id'];
+$connect-> query("insert comment(memberid,productid,date,content) values($memberid,$productid,now, 'content')")
+echo"<script> alter ('Bạn Đã bình luận thành công') </script>";
+else
+$_Session['content']=$content;
+echo"<script> alter ('Bạn cần đăng nhập để có thể bình luận');
+location='?option=signin&productid=$productid'; </script";
+endif;
+?>
